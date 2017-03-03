@@ -12,18 +12,23 @@ class Signup extends React.Component {
     ev.preventDefault();
     console.log(this.refs.email.value);
     console.log(this.refs.Password.value);
+     console.log(this.refs.name.value);
+     console.log(this.refs.o.value);
+     console.log(this.refs.b.value);
+    let name =this.refs.name.value;
     let email = this.refs.email.value;
     let password = this.refs.Password.value;
     firebase.auth().createUserWithEmailAndPassword
     (email, password)
     .then((user) => {
        let userDetails = {
-           username: user.email,
-           
+           useremail: user.email,
+          username:name 
          }
           // browserHistory.push('/login')
         
-         firebase.database().ref('signupusers/').push(userDetails)
+           firebase.database().ref('users/' + user.uid).set(userDetails)
+  
   
     })
     
@@ -36,9 +41,22 @@ class Signup extends React.Component {
       <form onSubmit={this.signup.bind(this)}>
         <div className ="form-group">
         <label>Name</label>
+         <input className="form-control" type="text" ref="name" />
+        <label>Email</label>
         <input className="form-control" type="email" ref="email" />
         <label>Password</label>
         <input className="form-control" type="Password" ref="Password" />
+        <label>Bloodgroup</label>
+        {/*<input className="form-control " type="select" ref="bgroup" >*/}
+        <select>
+        <option ref = "o">O</option>
+         <option ref="a">A+</option>
+          <option ref="b">B+</option>
+           <option ref="an">A-</option>
+            <option ref ="ap">A+</option>
+            </select><br/>
+        {/*</input>*/}
+        
         <button className="btn-primary rounded">signup</button>
         
         </div>
