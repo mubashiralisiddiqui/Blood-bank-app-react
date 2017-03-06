@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
 // import Home from "./home";
-class Signup extends React.Component {
+class Donate extends React.Component {
   constructor(props) {
     super(props);
     this.signup = this.signup.bind(this)
@@ -63,4 +63,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Donate;

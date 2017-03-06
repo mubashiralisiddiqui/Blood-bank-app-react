@@ -1,32 +1,43 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Home from './home';
-import {browserHistory,Link} from 'react-router';
+// import Home from './home';
+import {browserHistory,} from 'react-router';
 import * as firebase from 'firebase';
-
-
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 class Login extends React.Component {
   login(ev) {
     ev.preventDefault();
-    console.log(this.refs.email.value);
-    console.log(this.refs.Password.value);
-   let email = this.refs.email.value;
-    let password = this.refs.Password.value;
-    firebase.auth().signInWithEmailAndPassword
-    (email,password).catch(function(error) {
+    console.log(this.refs.email.getValue());
+    console.log(this.refs.Password.getValue());
+   let email=this.refs.email.getValue();
+    let password=this.refs.Password.getValue();
+    firebase.auth().signInWithEmailAndPassword(email,password)
+     .catch(function(error) {
   // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-
-  // ...
+  var errorCode=error.code;
+  var errorMessage=error.message;
+  if (errorCode==='auth/weak-password') {
+    alert('The password is too weak.');
+  } else {
+    alert(errorMessage);
+  }
+  console.log(error);
 })
+//     .catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+
+//   // ...
+// })
      .then((user) => {
-       let userDetails = {
-           name: user.email,
+      //  let userDetails={
+      //      name: user.email,
            
            
-         }
+      //    }
           console.log(user)
           console.log(user.uid)
           // var auth = true;
@@ -36,7 +47,7 @@ class Login extends React.Component {
          browserHistory.push('/home')
 
          console.log("logn success")
-         firebase.database().ref('login/').push(userDetails)
+        //  firebase.database().ref('login/').push(userDetails)
   
     })
     
@@ -44,20 +55,30 @@ class Login extends React.Component {
   render() {
   
     return (
-      <div className="jumbotron col-sm-9">
+      <div className="">
         
         <h1 className="text-center">Login</h1>
+         <div className="form">
       <form onSubmit={this.login.bind(this)}>
-        <div className ="form-group">
-        <label>Name</label>
+
+        
+            <TextField hintText="Email" ref="email" /> <br />
+            <br />
+            <TextField type= "password" hintText="Password" ref="Password" /> <br />
+            <br />
+
+               <RaisedButton  type="submit" label="Login" primary={true} />
+        {/*<div className="form-group">
+        <label>Email</label>
         <input className="form-control" type="email" ref="email" />
         <label>Password</label>
         <input className="form-control" type="Password" ref="Password" />
-        <button className="btn-primary rounded">login</button>
+        <button className="btn-primary rounded">login</button>*/}
       {/*<Link to="/home">  <button className="btn-primary rounded">Back</button></Link>*/}
         
-        </div>
+        {/*</div>*/}
       </form>
+      </div>
        
       </div>
     )
