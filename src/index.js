@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Signup from './signup';
+import App from './components/App';
+import Signup from './components/signup';
 import './index.css';
-import Login from './login';
-import Donate from './donate'
-import Home from './home'
-import { Router, Route, browserHistory} from 'react-router'
+import Login from './components/login';
+import Donate from './components/donate'
+import Home from './components/home'
+import { Router, Route, browserHistory} from 'react-router';
+
+import injectTapEventPlugin from "react-tap-event-plugin";
 
 
 
 ReactDOM.render(
   <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route path="/" component={ App}>
             {/*<IndexRoute component={App} />*/}
            
             <Route path="/signup" component={Signup}/>

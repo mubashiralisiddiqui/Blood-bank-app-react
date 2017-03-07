@@ -1,6 +1,6 @@
 import React from 'react';
 //import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 import * as firebase from 'firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -33,7 +33,7 @@ class App extends React.Component {
         < MuiThemeProvider>
         <div>
           <AppBar
-            title="BlooBank"iconClassNameRight="muidocs-icon-navigation-expand-more"
+            title="BloodBank"iconClassNameRight="muidocs-icon-navigation-expand-more"
           />
           {/*<h1>Blood Blank </h1>*/}
         

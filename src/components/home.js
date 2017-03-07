@@ -24,11 +24,12 @@ class Home extends React.Component {
     demo(){
         console.log('asdsad');
     }
+    
     componentWillMount() {
         firebase.database().ref('users/').on('child_added', (data) => {
             let obj = data.val();
             console.log("firebasedata", obj);
-            let dbarray = [];
+           let dbarray = [];
             dbarray.push(obj)
             console.log(dbarray)
             console.log(this.state.array)
@@ -45,6 +46,7 @@ class Home extends React.Component {
         ev.preventDefault();
         firebase.auth().signOut().then(function () {
             console.log('Sign-out successful.')
+
             browserHistory.push('/app')
         }, function (error) {
             // An error happened.
@@ -69,12 +71,12 @@ class Home extends React.Component {
                         return ( <option key={i} >{val.username}</option>)
                     })}
                    
-                    <option ref="o">O</option>
+                    {/*<option ref="o">O</option>
 
                     <option ref="a">A+</option>
                     <option ref="b">B+</option>
                     <option ref="an">A-</option>
-                    <option ref="ap">A+</option>
+                    <option ref="ap">A+</option>*/}
                 </select><br />
                 {/*<div>
                     {this.state.array.map((val, i) => {
