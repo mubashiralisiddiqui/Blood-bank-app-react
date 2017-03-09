@@ -27,13 +27,13 @@ class Login extends React.Component {
 })
 
      .then((user) => {
-       let userDetails={
-           name: user.email,
+      //  let userDetails={
+      //      name: user.email,
            
            
-         }
-          console.log(user)
-          console.log(user.uid)
+      //    }
+      //     console.log(user)
+      //     console.log(user.uid)
           // var auth = true;
           // this.setState({
           //   auth: auth
@@ -58,7 +58,7 @@ class Login extends React.Component {
         
             <TextField hintText="Email" ref="email" /> <br />
             <br />
-            <TextField type= "password" hintText="Password" ref="Password" /> <br />
+            <TextField type="password" hintText="Password" ref="Password" /> <br />
             <br />
 
                <RaisedButton  type="submit" label="Login" primary={true} />

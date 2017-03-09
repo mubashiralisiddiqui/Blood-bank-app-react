@@ -8,7 +8,7 @@ import Donate from './components/donate'
 import Home from './components/home'
 import { Router, Route, browserHistory} from 'react-router';
 
-import injectTapEventPlugin from "react-tap-event-plugin";
+// import injectTapEventPlugin from "react-tap-event-plugin";
 
 
 
