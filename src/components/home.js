@@ -15,99 +15,64 @@ class Home extends React.Component {
         super(props);
 
         this.logout = this.logout.bind(this);
-        // this.demo=this.demo.bind(this);
-        // let arr =[]/
-        this.state = { array: [] };
+        this.state = {
+            array: [],
+            donors: []
+
+        };
         // console.log(this.state.array)
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
 
+        //  let _self = this;
+    
+        // let ref = firebase.database().ref("/users");
+        // let _self = [];
+        // ref.once('value', function (snapshot) {
+        //     var obj=  snapshot.val();
+        //     console.log(obj)
+            // snapshot.forEach(childSnapshot => {
+            //     _self.push(childSnapshot.val())
+            // })
+            
+            // _self.setState({
+            //     array: _self.arr
+            // })
+        // });
         var userId = firebase.auth().currentUser.uid;
-
-    //  var stores = [];
-
-        firebase.database().ref('users/'+userId).on('value', (data)=>{
+      //   retrieve data by signup page
+        firebase.database().ref('users/'+userId).on('value', (data) => {
             var obj = data.val();
             console.log(obj)//every thing is ok till this line data is retrieve
-              
-            //   let alldata = this.props.users;
-            //   console.log(alldata)
-            //   /alldata=alldata.concat(obj);
-            //   console.log(alldata)
-            let dbarray=[];
-            dbarray.push(obj)
-            console.log(dbarray);
+            let dbarray = [];
+           for(var prop in obj){
+                dbarray.push(obj[prop]);
+                console.log(dbarray);
+                this.setState({
+                    array: dbarray
+                })
+                console.log(this.state.array);
 
-
-            // for(var prop in obj)
-            // stores.push(obj[prop]);
-            // console.log(stores);
-            // console.log(this.state.array)
-            this.setState({
-                array: dbarray
+            }
             })
-        })
-
-    
-
-
-
-
-        // var starCountRef = firebase.database().ref('users/' + userId);
-        // starCountRef.on('value', function (snapshot) {
-        //     (snapshot.val());
-        //     console.log(snapshot.val())
-        //     let dbarray=[];
-        //     dbarray.push(snapshot.val().username)
-        //     console.log(this.state.array)
-        //     this.setState({
-        //         array:dbarray
-        //     })
-        // });
-
-
-
-
-
-
-        //    return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
-        //         var username = snapshot.val();
-        //         let dbarray =[];
-        //         dbarray.push(username)
-        //         console.log(username)
-        //         console.log( this.state.array)
-
-        //    this.setState({
-        //        array: dbarray
-        //    })
-
-        // console.log(a)
-        // console.log(this.state.array);
-
-
-        // this.setState({
-        //     array: dbarray
+          
 
         // })
-        // });
-
-        //     firebase.database().ref('users/' + userId).once('child_added', (data) => {
-        //         let obj = data.val();
-        //         console.log("firebasedata", obj.useremail, obj.username);
-        //         let dbarray = [];
-
-
-        //         dbarray.push(obj)
-        //         console.log(dbarray)
-        //         console.log(this.state.array)
-        //         this.setState({
-        //             array: dbarray
-
-        //         })
+        // Donor detail retrive by firebase
+        // firebase.database().ref('donors/' + userId).on('value', (data) => {
+        //     var obj = data.val();
+        //     // console.log(obj)//every thing is ok till this line data is retrieve
+        //     let donorarray = [];
+        //     donorarray.push(Object.keys(obj))
+        //     console.log(donorarray);
+        //     this.setState({
+        //         donors: donorarray
         //     })
+        // })
+
 
 
     }
@@ -120,26 +85,33 @@ class Home extends React.Component {
         }, function (error) {
             // An error happened.
         })
-
-
     }
     render() {
         return (
             <div>
                 <MuiThemeProvider>
                     <AppBar title="Blood Bank"
-
-                        // iconClassNameRight="muidocs-icon-navigation-expand-more"
                         iconElementRight={<FlatButton onClick={this.logout} label="Logout" />}
+                    // iconClassNameRight="muidocs-icon-navigation-expand-more"
+
                     />
 
                 </MuiThemeProvider>
 
-                 <div>
+                <div>
+
+                    {/*{this.state.array.map((val, i) => {
+                        return (<p key={i} style={{ float: "right" }}>user:{val}</p>)
+                    })}*/}
                     {this.state.array.map((val, i) => {
-                        return (<p key={i} style={{float:"right"}}>user:{val.username}</p>)
+                        return <li key={i}>{val}</li>
                     })}
                 </div>
+                {/*<div>
+                    {this.state.array.map((val, i) => {
+                        return (<li key={i} style={{ float: "right" }}>country:{val}</li>)
+                    })}
+                </div>*/}
 
                 {/*<option ref="o">O</option>
 
@@ -154,8 +126,11 @@ class Home extends React.Component {
                     })}
                 </div>*/}
                 <Link to="/donate"><button>Donate Blood</button></Link>
+                 <Link to="/donordetail"><button>Requird Blood</button></Link>
 
-                
+                {/*{this.state.donors.map((val)=>{
+                  return <li>{val}</li>
+              })}*/}
             </div>
         )
     }
