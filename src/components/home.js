@@ -49,6 +49,7 @@ class Home extends React.Component {
             console.log(obj)//every thing is ok till this line data is retrieve
             let dbarray = [];
            for(var prop in obj){
+               if(prop){}
                 dbarray.push(obj[prop]);
                 console.log(dbarray);
                 this.setState({

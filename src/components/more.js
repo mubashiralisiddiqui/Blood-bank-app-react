@@ -16,14 +16,14 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 
 
-class more extends React.Component{
+class More extends React.Component{
 
   
     constructor(props) {
         super(props);
 
-        this.logout = this.logout.bind(this);
-        this.state = { array: [] };
+        this.logout= this.logout.bind(this);
+        this.state={ donors: [] };
 
     }
     componentDidMount() {
@@ -31,15 +31,16 @@ class more extends React.Component{
 
         // var userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('users/').on('value', (data) => {
+        firebase.database().ref('donors/').on('value', (data) => {
             var obj = data.val();
-            // console.log(obj)//every thing is ok till this line data is retrieve
-            let dbarray = [];
+
+            console.log(obj)//every thing is ok till this line data is retrieve
+            let dbarray=[];
             for (var prop in obj)
                 dbarray.push(obj[prop])
             console.log(dbarray);
             this.setState({
-                array: dbarray
+                donors: dbarray
             })
         })
     }
@@ -69,20 +70,27 @@ class more extends React.Component{
                         <TableHeader>
                             <TableRow>
                                 <TableHeaderColumn>ID</TableHeaderColumn>
-                                <TableHeaderColumn>Name</TableHeaderColumn>
-                                <TableHeaderColumn>Bloo Group</TableHeaderColumn>
-                                <TableHeaderColumn>Moreinfo</TableHeaderColumn>
+                                <TableHeaderColumn>country</TableHeaderColumn>
+                                <TableHeaderColumn>city</TableHeaderColumn>
+                                <TableHeaderColumn>Area</TableHeaderColumn>
+                                   <TableHeaderColumn>Gender</TableHeaderColumn>
+                                      <TableHeaderColumn>Mobile#</TableHeaderColumn>
+                                         <TableHeaderColumn>Weight</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
 
                         <TableBody>
-                            {this.state.array.map((val, i) => {
+                            {this.state.donors.map((val, i) => {
                                 return (
-                                    <TableRow>
+                                    <TableRow key={i}>
                                         <TableRowColumn key={i}>{i + 1}</TableRowColumn>
-                                        <TableRowColumn key={i}>{val.username}</TableRowColumn>
-                                        <TableRowColumn key={i}>{val.blood}</TableRowColumn>
-                                         <TableRowColumn key={i}><Link to =""><button>Request</button></Link></TableRowColumn>
+                                        <TableRowColumn key={i}>{val.Country}</TableRowColumn>
+                                        <TableRowColumn key={i}>{val.city}</TableRowColumn>
+                                          <TableRowColumn key={i}>{val.area}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.gender}</TableRowColumn>
+                                              <TableRowColumn key={i}>{val.mobilenum}</TableRowColumn>
+                                                <TableRowColumn key={i}>{val.weight}</TableRowColumn>
+                                    
                                     </TableRow>
                                 )
                             })}

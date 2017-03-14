@@ -4,11 +4,11 @@ import * as firebase from 'firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
  import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
+// import TextField from 'material-ui/TextField';
 // import DropDownMenu from 'material-ui/DropDownMenu';
 // import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 
@@ -21,7 +21,7 @@ class DonorDetails extends React.Component{
         super(props);
 
         // this.logout = this.logout.bind(this);
-        this.state = { array: [] };
+        this.state={ array: [] };
 
     }
     componentDidMount() {
@@ -30,9 +30,9 @@ class DonorDetails extends React.Component{
         // var userId = firebase.auth().currentUser.uid;
 
         firebase.database().ref('users/').on('value', (data) => {
-            var obj = data.val();
+            var obj=data.val();
             // console.log(obj)//every thing is ok till this line data is retrieve
-            let dbarray = [];
+            let dbarray=[];
             for (var prop in obj)
                 dbarray.push(obj[prop])
             console.log(dbarray);
@@ -63,6 +63,7 @@ class DonorDetails extends React.Component{
                         // iconClassNameRight="muidocs-icon-navigation-expand-more"
                         iconElementRight={<FlatButton onClick={this.logout} label="Logout" />}
                     />
+                    <Link to ="moredetail"><button>Moredetails</button></Link>
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -76,12 +77,13 @@ class DonorDetails extends React.Component{
                         <TableBody>
                             {this.state.array.map((val, i) => {
                                 return (
-                                    <TableRow>
+                                    <TableRow key ={i}>
                                         <TableRowColumn key={i}>{i + 1}</TableRowColumn>
                                         <TableRowColumn key={i}>{val.username}</TableRowColumn>
                                         <TableRowColumn key={i}>{val.blood}</TableRowColumn>
                                          <TableRowColumn key={i}><Link to =""><button>Request</button></Link></TableRowColumn>
                                     </TableRow>
+
                                 )
                             })}
                         </TableBody>
