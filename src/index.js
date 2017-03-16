@@ -23,7 +23,7 @@ ReactDOM.render(
             <Route path="/login" component={Login} />
             </Route>
             <Route path="/app" component={App}/>
-            <Route path="/donate" component={Donate}/>
+            <Route path="/mubashir" component={Donate}/>
             <Route path="/home" component={Home} />
              <Route path="/donordetail" component={DonorDetails} />
               <Route path="/moredetail" component={More} />

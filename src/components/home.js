@@ -49,7 +49,7 @@ class Home extends React.Component {
             console.log(obj)//every thing is ok till this line data is retrieve
             let dbarray = [];
            for(var prop in obj){
-               if(prop){}
+                if(obj){}
                 dbarray.push(obj[prop]);
                 console.log(dbarray);
                 this.setState({
@@ -126,7 +126,7 @@ class Home extends React.Component {
                         return (<div key={i}><li >{val.username}</li></div>)
                     })}
                 </div>*/}
-                <Link to="/donate"><button>Donate Blood</button></Link>
+                <Link to="/mubashir"><button>Donate Blood</button></Link>
                  <Link to="/donordetail"><button>Requird Blood</button></Link>
 
                 {/*{this.state.donors.map((val)=>{

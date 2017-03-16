@@ -31,9 +31,10 @@ class DonorDetails extends React.Component{
 
         firebase.database().ref('users/').on('value', (data) => {
             var obj=data.val();
-            // console.log(obj)//every thing is ok till this line data is retrieve
+            console.log(obj)//every thing is ok till this line data is retrieve
             let dbarray=[];
             for (var prop in obj)
+            
                 dbarray.push(obj[prop])
             console.log(dbarray);
             this.setState({
@@ -41,7 +42,7 @@ class DonorDetails extends React.Component{
             })
         })
     }
-    logout(ev) {
+    logout( ev) {
         ev.preventDefault();
         firebase.auth().signOut().then(function () {
             console.log('Sign-out successful.')
@@ -63,7 +64,7 @@ class DonorDetails extends React.Component{
                         // iconClassNameRight="muidocs-icon-navigation-expand-more"
                         iconElementRight={<FlatButton onClick={this.logout} label="Logout" />}
                     />
-                    <Link to ="moredetail"><button>Moredetails</button></Link>
+                    <Link to="moredetail"><button>Moredetails</button></Link>
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -77,11 +78,11 @@ class DonorDetails extends React.Component{
                         <TableBody>
                             {this.state.array.map((val, i) => {
                                 return (
-                                    <TableRow key ={i}>
+                                    <TableRow key={i}>
                                         <TableRowColumn key={i}>{i + 1}</TableRowColumn>
                                         <TableRowColumn key={i}>{val.username}</TableRowColumn>
                                         <TableRowColumn key={i}>{val.blood}</TableRowColumn>
-                                         <TableRowColumn key={i}><Link to =""><button>Request</button></Link></TableRowColumn>
+                                         <TableRowColumn key={i}><Link to=""><button>Request</button></Link></TableRowColumn>
                                     </TableRow>
 
                                 )
