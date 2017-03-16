@@ -33,7 +33,7 @@ class More extends React.Component {
         };
 
     }
-    componentDidMount() {
+    handleBgroup(e, key) {
            
         var O ='O-';
         // var userId = firebase.auth().currentUser.uid;
@@ -51,9 +51,9 @@ class More extends React.Component {
                 donors: dbarray
             })
         })
-    }
+    
 
-  handleBgroup(e, key) {
+  
     e.preventDefault();
     this.setState({
       value: key + 1,
@@ -62,7 +62,7 @@ class More extends React.Component {
     })
     console.log(this.state.blood)
     // console.log(this.state.blood)
-
+   setTimeout(this.handleBgroup,3000)
   }
 
 
