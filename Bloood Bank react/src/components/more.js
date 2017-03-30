@@ -33,38 +33,112 @@ class More extends React.Component {
         };
 
     }
-    handleBgroup(e, key) {
+    // handleBgroup(e, key) {
            
-        var O ='O-';
+        // var O ='O-';
         // var userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('Bloodgroup/'+this.state.blood).on('value', (data) => {
-            var obj = data.val();
-   console.log(this.state.array)
-            console.log(obj)//every thing is ok till this line data is retrieve
-            let dbarray = [];
-            for (var prop in obj)
+        // firebase.database().ref('Bloodgroup/'+this.state.blood).on('value', (data) => {
+            // var obj = data.val();
+//    console.log(this.state.array)
+            // console.log(obj)//every thing is ok till this line data is retrieve
+//             let dbarray = [];
+//             let b= blood;
+//             switch(b){
+//                 case 'A+':
+//                 return
+//                 b.push('O-','A-','A+')
+//                 case 'O-':
+//                 return
+//                 b.push('O-')
+//                 case 'O+':
+//                 return
+//                 b.push('O+','O-')
+//                 case 'B+':
+//                 return
+//                 b.push('O-','O+','B+')
+//                  case 'B-':
+//                 return
+//                 b.push('O-','O+','B-')
+//             }
+//             for (var prop in obj)
 
-                dbarray.push(obj[prop])
-            console.log(dbarray);
-            this.setState({
-                donors: dbarray
-            })
-        })
+//                 dbarray.push(obj[prop])
+//             console.log(dbarray);
+//             this.setState({
+//                 donors: dbarray
+//             })
+//         // })
     
 
   
-    e.preventDefault();
-    this.setState({
-      value: key + 1,
-      blood: e.target.childNodes[0].nodeValue
-      
-    })
-    console.log(this.state.blood)
-    // console.log(this.state.blood)
-   setTimeout(this.handleBgroup,3000)
-  }
+//     e.preventDefault();
+//     this.setState({
+//       value: key + 1,
+//       blood: e.target.childNodes[0].nodeValue
+//     })
 
+
+//     console.log(this.state.blood)
+//     // console.log(this.state.blood)
+//    setTimeout(this.handleBgroup,3000)
+//   }
+  handleBgroup(e,key){
+    e.preventDefault();
+    var bg=[];
+    this.setState({
+        value:1+key
+    })
+    var blood = e.target.childNodes[0].nodeValue;
+    var a=[];
+    
+     switch (blood) {
+            case "A+":
+                a.push(['A+', 'O+', 'A-', 'O-']);
+                
+                break;
+
+            case "B+": {
+            a.push(['B+', 'O+', 'B-', 'O-']);
+                break;
+            }
+            case "AB+": {
+                a.push(['AB+', 'AB-','O+','O-','A+','A-','B+','B-']);
+                break;
+            }
+            case "O+":{
+                a.push(['O+', 'O-']);
+                break;
+            }
+            case "A-":{
+                a.push(['A-', 'O-']);
+                break;
+            }
+            case "B-":{
+                a.push(['B-', 'O-']);
+                break;
+            }
+            case "AB-":{
+                a.push(['AB-', 'O-','A-','B-']);
+                break;
+            }
+            case "O-":{
+                a.push(['O-']);
+                break;
+            }
+        
+    }    
+    a.map((val,i)=>{
+        return(
+            firebase.database().ref('Bloodgroup/'+this.state.blood+'/').on('value',(data)=>{
+                let obj = data.val();
+                console.log(obj)
+                
+            })
+        )
+    })
+    
+  }
 
     logout(ev) {
         ev.preventDefault();
