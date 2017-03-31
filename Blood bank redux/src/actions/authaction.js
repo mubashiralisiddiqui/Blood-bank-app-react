@@ -54,10 +54,10 @@ export function signOut(){
     }   
 }
  function signInUpdate(payload){
-    console.log(payload)
+    // console.log(payload)
     return{
         type: actionTypes.SiginUpadte,
-        payload: payload
+        payload
     }
 }
 function newUserAction(){

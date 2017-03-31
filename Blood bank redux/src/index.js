@@ -8,8 +8,8 @@ import {AppBarExampleIcon,Main,Signup,Login,Home,RequiredBlood,DonateBlood } fro
 import './index.css';
 
 
-import configureStore from './store/configureStore';
-
+// import configureStore from './store/configureStore';
+import store from './store/configureStore'
 import {
   Router,
   Route,
@@ -18,7 +18,7 @@ import {
 } from 'react-router';
 
 
-const store = configureStore();
+// const store = configureStore();
 
 injectTapEventPlugin();
 

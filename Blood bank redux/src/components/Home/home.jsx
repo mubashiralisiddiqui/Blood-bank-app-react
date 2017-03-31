@@ -18,7 +18,7 @@ constructor(props){
   }
   
   render() {
-   
+   console.log('auht------------',this.props.authAtatus.email)
     return (
       <div className="App">
         <Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
@@ -46,14 +46,14 @@ constructor(props){
 
 const mapStateToProps =(state) =>{
     return{
-        auth: state.AuthReducer
+        authAtatus: state.AuthReducer.authSignInData
     };
 }
-const mapDispatchToProps =(dispatch) =>{
-    return{
-        SignUp: (userSignUp) =>{
-            dispatch(signup(userSignUp));
-        }
-    };
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+// const mapDispatchToProps =(dispatch) =>{
+//     return{
+//         SignUp: (userSignUp) =>{
+//             dispatch(signup(userSignUp));
+//         }
+//     };
+// }
+export default connect(mapStateToProps)(Home);

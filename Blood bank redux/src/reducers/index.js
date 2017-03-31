@@ -6,7 +6,7 @@ import donordetail from './donatedetailsreducer';
 
 const rootReducer = combineReducers({
     example: exampleReducer,
-    auth:authReducer,
+    auth: authReducer,
     donordetail:donordetail
 });
 export default rootReducer;
