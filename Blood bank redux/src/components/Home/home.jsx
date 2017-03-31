@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-// import firebase from 'firebase';
-// import {connect}from 'react-redux';
 import {connect}from 'react-redux'
 import {signup} from '../../actions/authaction'
 
@@ -12,10 +10,6 @@ constructor(props){
   
 } 
   
-  componentWillMount() {
-    console.log(this.props.SignUp)
-    
-  }
   
   render() {
    console.log('auht------------',this.props.authAtatus.name)
@@ -30,19 +24,6 @@ constructor(props){
     );
   }
 }
-
-// function mapStateToProps(state){
-//   return{
-//     auth: state.AuthReducer
-//   }
-// }
-// function mapDispatchToProps(dispatch){
-// return{
-//   signin:(userSignin)=>{
-//    dispatch(SignIn(userSignin));
-//   }
-// }
-// }
 
 const mapStateToProps =(state) =>{
     return{
