@@ -18,12 +18,12 @@ constructor(props){
   }
   
   render() {
-   console.log('auht------------',this.props.authAtatus.email)
+   console.log('auht------------',this.props.authAtatus.name)
     return (
       <div className="App">
         <Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
        <Link to ="/Requiredblood"> <RaisedButton  label="Required Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
-
+       {this.props.authAtatus.name}
         <h1>Hello home</h1>        
       
       </div>

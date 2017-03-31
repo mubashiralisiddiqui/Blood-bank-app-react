@@ -11,6 +11,7 @@ export function signup(usersignup){
       .then((user) => {
         let userDetails = {
           useremail: usersignup.email,
+          name:usersignup.name
         }
         browserHistory.push('/login')
         var userId = firebase.auth().currentUser.uid;
@@ -30,10 +31,17 @@ export function SignIn(userSignIn){
         firebase.auth()
             .signInWithEmailAndPassword(userSignIn.email, userSignIn.password)
             .then((user) => {
-                dispatch(signInUpdate(user));
+                var userId = firebase.auth().currentUser.uid;
+             firebase.database().ref('users/'+userId).on('value', (data) => {
+            var obj = data.val();
+            console.log(obj)
+            dispatch(signInUpdate(obj));
+            })
+                
                 // console.log(user);
                 browserHistory.push('/home');
             })
+            
             .catch((error) => {
                 // var errorCode = error.code;
                 var errorMessage = error.message;
@@ -54,7 +62,7 @@ export function signOut(){
     }   
 }
  function signInUpdate(payload){
-    // console.log(payload)
+    console.log(payload)
     return{
         type: actionTypes.SiginUpadte,
         payload

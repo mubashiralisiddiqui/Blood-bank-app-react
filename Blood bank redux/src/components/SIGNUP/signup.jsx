@@ -23,6 +23,7 @@ class Signup extends React.Component {
         let email = this.refs.email.getValue();
         let password = this.refs.Password.getValue();
         let userSignUp={
+            name:name,
             email:email,
             password:password
         }
