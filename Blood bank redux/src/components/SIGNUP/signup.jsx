@@ -27,6 +27,7 @@ class Signup extends React.Component {
             password:password
         }
         this.props. SignUp(userSignUp)
+        console.log(this.props.firedata)
     }
     render() {
         const style = {
@@ -65,7 +66,8 @@ class Signup extends React.Component {
 }
 const mapStateToProps =(state) =>{
     return{
-        auth: state.AuthReducer
+        auth: state.AuthReducer,
+        firedata:state.firebaseval
     };
 }
 const mapDispatchToProps =(dispatch) =>{

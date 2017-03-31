@@ -15,8 +15,11 @@ export function signup(usersignup){
         browserHistory.push('/login')
         var userId = firebase.auth().currentUser.uid;
         firebase.database().ref('users/'+ userId).set(userDetails)
-
-        // firebase.database().ref('users/bloodgroup/').push({userDetails})
+      
+        firebase.database().ref('users/'+userId).on('value', (data) => {
+            var obj = data.val();
+            console.log(obj)
+            })
 
       })
 
@@ -27,7 +30,7 @@ export function SignIn(userSignIn){
         firebase.auth()
             .signInWithEmailAndPassword(userSignIn.email, userSignIn.password)
             .then((user) => {
-                dispatch(signInUpdate());
+                dispatch(signInUpdate(user));
                 // console.log(user);
                 browserHistory.push('/home');
             })
@@ -50,13 +53,15 @@ export function signOut(){
         });
     }   
 }
-function signInUpdate(){
+ function signInUpdate(payload){
+    console.log(payload)
     return{
-        type: actionTypes.SiginUpadte
+        type: actionTypes.SiginUpadte,
+        payload: payload
     }
 }
 function newUserAction(){
   return{
-      type:actionTypes. GetUserInfo
+      type:actionTypes.GetUserInfo
   }
 }

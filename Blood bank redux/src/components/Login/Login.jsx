@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
 import './App.css';
-
 import TextField from 'material-ui/TextField';
 import {browserHistory} from 'react-router';
 import Paper from 'material-ui/Paper';
@@ -24,7 +21,10 @@ constructor(props){
      email:email,
      password:pass
    } 
+   
    this.props.signin(signinDetail)
+   console.log(this.props.fireVal)
+   console.log(this.props.loginval)
   }
   
   render() {
@@ -66,7 +66,9 @@ constructor(props){
 
 function mapStateToProps(state){
   return{
-    auth: state.AuthReducer
+    auth: state.AuthReducer,
+    fireVal:state.firebaseval,
+    loginval:state.authSignIn
   }
 }
 function mapDispatchToProps(dispatch){
