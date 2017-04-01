@@ -27,7 +27,7 @@ class Signup extends React.Component {
             email:email,
             password:password
         }
-        this.props. SignUp(userSignUp)
+        this.props.SignUp(userSignUp)
         console.log(this.props.firedata)
     }
     render() {

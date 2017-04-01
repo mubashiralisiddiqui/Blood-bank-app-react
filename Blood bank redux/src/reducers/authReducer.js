@@ -3,19 +3,21 @@ import actionTypes from './actionTypes'
 const initialState = {
     authLogOut: false,
     authSignInData: [],
-    userinfo: []
+    userinfo: [],
+    donor:["hello datta"]
 }
 
 
 const authReducer = (state = initialState, action) =>{
+    // console.log(action.donordata)
     switch (action.type) {
-        // case actionTypes.GetUserInfo:{
-        //     return state={
-        //         ...state,
-        //         authLogOut: !state.authLogOut,
-        //         userinfo:action.userinfo
-        //     }
-        // }
+        case actionTypes.AllDonorInfo:{
+            return state={
+                ...state,
+                authLogOut: !state.authLogOut,
+                donor:action.donordata
+            }
+        }
         case actionTypes.SiginUpadte:{
             return state={
                 ...state,

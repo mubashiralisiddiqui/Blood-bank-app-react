@@ -5,7 +5,7 @@ import actionTypes from '../reducers/actionTypes';
 
 export function signup(usersignup){
   return dispatch=>{
-      dispatch (newUserAction)
+   
       firebase.auth().createUserWithEmailAndPassword(usersignup.email,usersignup.password)
 
       .then((user) => {
