@@ -6,7 +6,7 @@ import actionTypes from '../reducers/actionTypes';
 export function submit(donordetails){
   return dispatch=>{
       dispatch (newUserAction)
-      firebase.database().ref('Bloodgroup/'+donordetails.blood+'/').push(donordetails)
+      firebase.database().ref().child('Bloodgroup/'+donordetails.blood+'/').push(donordetails)
     alert("thanks for your input")
     
     

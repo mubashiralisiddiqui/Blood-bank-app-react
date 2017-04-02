@@ -1,113 +1,116 @@
-/*import {connect}from 'react-redux'
-
-import React from 'react'
-import {userdetails} from '../../actions/userdetailaction'
-class RequiredBlood extends React.Component{
-    constructor(props){
-        super(props);
-        this.fire = this.fire.bind(this)
-    }
-     fire(){
-         let dummy='bhand';
-         this.props.userdetails(dummy)
-     }
-    render(){
-        console.log(this.props.donors)
-        return(
-            <div>
-                <button onClick={this.fire}>data</button>
-                <h1>RequiredBlood firebase remaining
-
-                </h1>
-            </div>
-        )
-    }
-}
-
-// const mapStateToProps =(state) =>{
-//     return{
-//         donors: state.donatedetailsreducer.donor
-//     };
-// }
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        userdetails: (dummy) =>{
-            dispatch(userdetails(dummy));
-        }
-    };
-}
-export default connect(mapDispatchToProps)(RequiredBlood);
-*/
 
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux'
-// import {signup} from '../../actions/authaction'
-import { check } from '../../actions/userdetailaction'
-
-import { Link } from 'react-router';
+import { takeBlood } from "../../actions/userdetailaction"
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+import {Link} from 'react-router';
 class Requiredblood extends Component {
     constructor(props) {
         super(props);
-        this.checkfunc = this.checkfunc.bind(this);
+        this.state={
+            value: 1,
+            blood: '',
+        }
     }
-    checkfunc() {
-        this.props.SignUp()
-        console.log(this.props.donorInfo)
+
+   
+    handleBgroup(e, key) {
+        e.preventDefault();
+        this.setState({
+            value: key + 1,
+        })
+      var   bloodg= e.target.childNodes[0].nodeValue;
+      console.log(bloodg)
+       this.props.TakeBlood(bloodg)
+
+        console.log(this.state.blood)
+        // this.props.SignUp(this.state.blood)
     }
 
     render() {
-        //    console.log('auht------------',this.props.authAtatus.name)
+
         return (
             <div className="App">
-                {/*<Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>*/}
-                <Link to="/Requiredblood"> <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }} onClick={this.checkfunc} /></Link>
-                {/*{this.props.authAtatus.name}*/}
-                <h1>Hello home</h1>
+              
+                <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }}/>
+                  <br/><br/><br/>
+                <DropDownMenu value={this.state.value} onChange={this.handleBgroup.bind(this)} ref="blood" style={{ width: 200 }} required="required">
+                    <MenuItem  style={{color:"red"}} value={1} primaryText="Select Blood Group" disabled />
+                    <MenuItem value={2} primaryText="A+" />
+                    <MenuItem value={3} primaryText="B+" />
+                    <MenuItem value={4} primaryText="AB+" />
+                    <MenuItem value={5} primaryText="O+" />
+                    <MenuItem value={6} primaryText="O-" />
+                    <MenuItem value={7} primaryText="AB-" />
+                    <MenuItem value={8} primaryText="B-" />
+                    <MenuItem value={9} primaryText="A-" />
+                </DropDownMenu>
+                <br />
+
+                <h1>Donor Info</h1>
                 <Table>
                     <TableHeader>
-                        <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Bloo Group</TableHeaderColumn>
-                            <TableHeaderColumn>Moreinfo</TableHeaderColumn>
+                        <TableRow >
+                            <TableHeaderColumn  style={{color:"red"}}>ID</TableHeaderColumn>
+                            <TableHeaderColumn  style={{color:"red"}}>Country</TableHeaderColumn>
+                            <TableHeaderColumn  style={{color:"red"}}> Area</TableHeaderColumn>
+                            <TableHeaderColumn  style={{color:"red"}}>city</TableHeaderColumn>
+                            <TableHeaderColumn  style={{color:"red"}}>Bloo Group</TableHeaderColumn>
+                            <TableHeaderColumn style={{color:"red"}} >Mobile num</TableHeaderColumn>
+                            <TableHeaderColumn>weight</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
 
                     <TableBody>
                         {this.props.donorInfo.map((val, i) => {
-                            console.log("donorInfo----------",val);
-                            
+                            {/*console.log("donorInfo----------", val);*/ }
+                            console.log(val)
+
                             return (
                                 <TableRow key={i}>
                                     <TableRowColumn key={i}>{i + 1}</TableRowColumn>
                                     <TableRowColumn key={i}>{val.Country}</TableRowColumn>
-                                    <TableRowColumn key={i}>{val.age}</TableRowColumn>
-                                    <TableRowColumn key={i}><Link to=""><button>Request</button></Link></TableRowColumn>
+                                    <TableRowColumn key={i}>{val.area}</TableRowColumn>
+                                    <TableRowColumn key={i}>{val.city}</TableRowColumn>
+                                    {/*<TableRowColumn key={i}>{val.age}</TableRowColumn>*/}
+                                    <TableRowColumn key={i}>{val.blood}</TableRowColumn>
+                                    <TableRowColumn key={i}>{val.city}</TableRowColumn>
+                                    <TableRowColumn key={i}>{val.weight}</TableRowColumn>
+
+                                    {/*<TableRowColumn key={i}><Link to=""><button>Request</button></Link></TableRowColumn>*/}
                                 </TableRow>
 
                             )
                         })}
                     </TableBody>
                 </Table>
-                 
+
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
     return {
         donorInfo: state.donatedetailsreducer.donor,
-       
-    };
+    }
 }
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch) {
+    console.log(dispatch)
     return {
-        SignUp: () => {
-            dispatch(check());
+        TakeBlood: (userSignin) => {
+            // console.log(userSignin)
+            dispatch(takeBlood(userSignin));
         }
-    };
+    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Requiredblood);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Requiredblood)
+// export default connect((state)=>{
+//     return {
+//         donorInfo:state.donatedetailsreducer.donor
+//     }
+// })(Requiredblood);

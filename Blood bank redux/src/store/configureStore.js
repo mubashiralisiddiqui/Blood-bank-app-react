@@ -1,4 +1,3 @@
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -6,11 +5,12 @@ import thunk from 'redux-thunk';
 import AuthReducer from '../reducers/authReducer'
 import donatedetailsreducer from '../reducers/donatedetailsreducer'
 
-// const configureStore = (initialState) => createStore(
-//   rootReducer,
-//   initialState,
-//   applyMiddleware(thunk)
-// );
+// const configureStore = createStore(
+//     combineReducers({
+//    AuthReducer,
+//   donatedetailsreducer}),(applyMiddleware(thunk))
+  
+// )
 
 // export default configureStore;
 export default createStore(
