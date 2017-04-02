@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { takeBlood } from "../../actions/userdetailaction"
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import {Link} from 'react-router';
+
 class Requiredblood extends Component {
     constructor(props) {
         super(props);
@@ -66,9 +66,7 @@ class Requiredblood extends Component {
 
                     <TableBody>
                         {this.props.donorInfo.map((val, i) => {
-                            {/*console.log("donorInfo----------", val);*/ }
                             console.log(val)
-
                             return (
                                 <TableRow key={i}>
                                     <TableRowColumn key={i}>{i + 1}</TableRowColumn>
@@ -79,8 +77,6 @@ class Requiredblood extends Component {
                                     <TableRowColumn key={i}>{val.blood}</TableRowColumn>
                                     <TableRowColumn key={i}>{val.city}</TableRowColumn>
                                     <TableRowColumn key={i}>{val.weight}</TableRowColumn>
-
-                                    {/*<TableRowColumn key={i}><Link to=""><button>Request</button></Link></TableRowColumn>*/}
                                 </TableRow>
 
                             )

@@ -25,8 +25,8 @@ const authReducer = (state = initialState, action) =>{
                 authSignInData: action.payload,
             }
         }
-
+        default:{return state;}
     }
-    return state;
+    
 }
 export default authReducer;

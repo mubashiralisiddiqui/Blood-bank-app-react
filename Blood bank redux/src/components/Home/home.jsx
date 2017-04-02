@@ -5,10 +5,7 @@ import {check} from '../../actions/userdetailaction'
 
 import {Link} from 'react-router';
 class Home extends Component {
-constructor(props){
-  super(props);
-} 
-  
+
   render() {
     return (
       <div className="App">

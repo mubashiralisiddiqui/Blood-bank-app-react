@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
 import TextField from 'material-ui/TextField';
-import { browserHistory } from 'react-router';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import firebase from 'firebase';
 import { SignIn } from '../../actions/authaction'
 import { connect } from 'react-redux'
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this)
+    this.login=this.login.bind(this)
   }
   login(e) {
     e.preventDefault();
-    var email = this.refs.email.getValue();
-    var pass = this.refs.pass.getValue();
-    var demo = this.refs.demo;
+    var email=this.refs.email.getValue();
+    var pass=this.refs.pass.getValue();
     let signinDetail = {
       email: email,
       password: pass
     }
-
     this.props.signin(signinDetail)
     console.log(this.props.fireVal)
     console.log(this.props.loginval)
   }
-
   render() {
     const style = {
       height: 340,

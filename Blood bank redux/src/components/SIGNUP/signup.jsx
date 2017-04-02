@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import * as firebase from 'firebase';
-import { browserHistory } from 'react-router'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
@@ -65,13 +63,13 @@ class Signup extends React.Component {
         )
     }
 }
-const mapStateToProps =(state) =>{
+const mapStateToProps=(state) =>{
     return{
         auth: state.AuthReducer,
         firedata:state.firebaseval
     };
 }
-const mapDispatchToProps =(dispatch) =>{
+const mapDispatchToProps=(dispatch) =>{
     return{
         SignUp: (userSignUp) =>{
             dispatch(signup(userSignUp));

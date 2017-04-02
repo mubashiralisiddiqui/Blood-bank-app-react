@@ -4,7 +4,8 @@ import AppBar from 'material-ui/AppBar';
 import firebase from 'firebase';
 import FlatButton from 'material-ui/FlatButton';
 import { browserHistory } from 'react-router';
-
+import {signOut} from '../../actions/authaction';
+import {connect}from 'react-redux'
 class AppBarExampleIcon extends React.Component {
     constructor() {
         super();
@@ -32,12 +33,13 @@ class AppBarExampleIcon extends React.Component {
 
     logout(e) {
         e.preventDefault();
-        firebase.auth().signOut().then(function () {
-            console.log("Sign-out successful");
-            browserHistory.push('/');
-        }).catch(function (error) {
-            // An error happened.
-        });
+      console.log(  this.props.Logout())
+        // firebase.auth().signOut().then(function () {
+        //     console.log("Sign-out successful");
+        //     browserHistory.push('/');
+        // }).catch(function (error) {
+        //     // An error happened.
+        // });
     }
 
     
@@ -61,7 +63,18 @@ class AppBarExampleIcon extends React.Component {
         )
     }
 }
+function mapStateToProps(state){
+  return{
+    auth: state.AuthReducer
+  }
+}
+function mapDispatchToProps(dispatch){
+return{
+  Logout:(userSignin)=>{
+   dispatch(signOut(userSignin));
+  }
+}
+}
 
 
-
-export default AppBarExampleIcon;
+export default connect(mapStateToProps,mapDispatchToProps)(AppBarExampleIcon);

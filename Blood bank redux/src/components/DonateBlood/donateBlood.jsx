@@ -28,7 +28,7 @@ class DonateBlood extends React.Component {
     let age=this.refs.weight.getValue();
     let mobilenum=this.refs.mobnum.getValue();
      let blood=this.state.blood;
-    let name=this.refs.name
+    let name=this.refs.name.getValue();
     // console.log(Country, city, blood, weight, mobilenum, area, age)
     let donordetails={
       name:name,
@@ -88,7 +88,7 @@ class DonateBlood extends React.Component {
                 </DropDownMenu>
                 <br />
                 
-                <RaisedButton type="submit" label="Submit" primary={true} />
+                <RaisedButton type="submit" label="Submit" secondary={true} />
                 <br/>
                 <br/>
               </form>

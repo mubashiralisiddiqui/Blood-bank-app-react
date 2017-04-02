@@ -54,15 +54,15 @@ export function signOut(){
  return dispatch=>{     
         firebase.auth().signOut()
         .then(function() {
-            dispatch(signInUpdate());
-            browserHistory.push('/signin');
+            // dispatch(signInUpdate());
+            browserHistory.push('/');
         }).catch(function(error) {
             console.log('Server error');
         });
     }   
 }
  function signInUpdate(payload){
-    console.log(payload)
+    // console.log(payload)
     return{
         type: actionTypes.SiginUpadte,
         payload
