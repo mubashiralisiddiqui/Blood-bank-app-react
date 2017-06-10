@@ -56,8 +56,8 @@ class Signup extends React.Component {
         let userDetails = {
           useremail: user.email,
           username: name,
-          blood: this.state.blood
-
+          blood: this.state.blood,
+          
         }
         browserHistory.push('/login')
         var userId = firebase.auth().currentUser.uid;
@@ -69,11 +69,10 @@ class Signup extends React.Component {
 
   }
   render() {
-
     return (
       <div>
         <h1 className="text-center">signup</h1>
-        <MuiThemeProvider>
+       
           <div className="form">
             <form onSubmit={this.signup.bind(this)}>
               <TextField hintText="Name" ref="name" /> <br />
@@ -99,7 +98,7 @@ class Signup extends React.Component {
               <Link to="/login"><p>Already have an account?</p></Link>
             </form>
           </div>
-        </MuiThemeProvider>
+        
 
         <div className="form">
 

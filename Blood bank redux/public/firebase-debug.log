@@ -1,0 +1,13 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\node.exe C:\Users\mubashirali\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase --debug init
+[debug] CLI Version:  3.6.1
+[debug] Platform:     win32
+[debug] Node Version: v7.5.0
+[debug] Time:         Mon Apr 17 2017 16:22:51 GMT+0500 (Pakistan Standard Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[error] 
+[error] Error: There was an error loading firebase.json:
+
+Parse Error: Imported file dasfd does not exist

@@ -1,0 +1,18 @@
+
+.signup{
+    min-width: 320px;
+      max-width: 400px;
+      height: auto;
+      position: absolute;
+      top: 20%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+}
+
+.signup-flatButton {
+    color: white !important;
+    background-color: #9E9E9E !important;
+    margin: 5px !important;
+}

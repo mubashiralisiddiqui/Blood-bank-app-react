@@ -9,12 +9,14 @@ import Home from './components/home';
 import DonorDetails from './components/donordetails'
 import { Router, Route, browserHistory} from 'react-router';
 import More from './components/more'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // import injectTapEventPlugin from "react-tap-event-plugin";
 
 
 
 ReactDOM.render(
+   <MuiThemeProvider>
   <Router history={browserHistory}>
         <Route path="/" component={ App}>
             {/*<IndexRoute component={App} />*/}
@@ -29,7 +31,8 @@ ReactDOM.render(
               <Route path="/moredetail" component={More} />
          
        
-    </Router>,
+    </Router>
+     </MuiThemeProvider>,
 
   
 
