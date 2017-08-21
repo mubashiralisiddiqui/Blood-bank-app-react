@@ -7,9 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { submit } from '../../actions/firebaseaction'
 import { Link } from 'react-router'
-import images from './images.jpg'
 class DonateBlood extends React.Component {
-
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this)
@@ -18,7 +16,6 @@ class DonateBlood extends React.Component {
       blood: '',
     }
   }
-
   submit(e) {
     e.preventDefault();
     let Country = this.refs.Country.getValue();
@@ -27,7 +24,6 @@ class DonateBlood extends React.Component {
     let weight = this.refs.weight.getValue();
     let age = this.refs.weight.getValue();
     let mobilenum = this.refs.mobnum.getValue();
-    let blood = this.state.blood;
     let name = this.refs.name.getValue();
     let donordetails = {
       name: name,
@@ -41,38 +37,22 @@ class DonateBlood extends React.Component {
     }
     this.props.Submit(donordetails)
   }
-
   handleBlgroup(e, key) {
     e.preventDefault();
     this.setState({
       value: key + 1,
       blood: e.target.childNodes[0].nodeValue
-
     })
     console.log(this.state.blood)
   }
   render() {
-    // var style = {
-    //   width: "100%",
-    //   // height: "400px",
-    //   backgroundImage: `url(${images})`,
-    //   backgroundSize: 'cover',
-    //         overflow: 'hidden',
-    //         opacity:'0.5',
-      
-    // }
     return (
       <div>
-        
         <MuiThemeProvider>
           <div>
-            {/*<img src={images} style={{width:"500px",zIndex:"1000",float:"left"}}/>*/}
             <Link to="/home"> <RaisedButton label="Back" secondary={true} style={{ float: "right", marginRight: "20px", backgroundColr: "pink" }} /></Link>
             <div className="form">
-
-
               <h4>Donor Details</h4>
-
               <form onSubmit={this.submit}>
                 <TextField hintText="Name" ref="name" required="isRequired" /> <br /><br />
                 <TextField hintText="Country" ref="Country" required="isRequired" /> <br />
@@ -81,7 +61,6 @@ class DonateBlood extends React.Component {
                 <br />
                 <TextField type="text" hintText="Area" ref="area" required="isRequired" /> <br />
                 <br />
-                {/*<TextField type="text" hintText="Gender" ref="gender" /> <br />*/}
                 <br />
                 <TextField type="number" hintText="weight" ref="weight" required="isRequired" /> <br />
                 <br />
@@ -100,7 +79,6 @@ class DonateBlood extends React.Component {
                   <MenuItem value={9} primaryText="A-" />
                 </DropDownMenu>
                 <br />
-
                 <RaisedButton type="submit" label="Submit" secondary={true} />
                 <br />
                 <br />
@@ -112,7 +90,6 @@ class DonateBlood extends React.Component {
     )
   }
 }
-
 function mapStateToProps(state) {
   return {
     auth: state.AuthReducer
@@ -125,6 +102,5 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(DonateBlood);
 

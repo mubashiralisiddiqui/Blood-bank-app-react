@@ -4,29 +4,25 @@ const initialState = {
     authLogOut: false,
     authSignInData: [],
     userinfo: [],
-    donor:["hello datta"]
+    donor: ["hello datta"]
 }
-
-
-const authReducer = (state = initialState, action) =>{
-    // console.log(action.donordata)
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.AllDonorInfo:{
-            return state={
+        case actionTypes.AllDonorInfo: {
+            return state = {
                 ...state,
                 authLogOut: !state.authLogOut,
-                donor:action.donordata
+                donor: action.donordata
             }
         }
-        case actionTypes.SiginUpadte:{
-            return state={
+        case actionTypes.SiginUpadte: {
+            return state = {
                 ...state,
                 authLogOut: !state.authLogOut,
                 authSignInData: action.payload,
             }
         }
-        default:{return state;}
+        default: { return state; }
     }
-    
 }
 export default authReducer;

@@ -8,36 +8,30 @@ import { connect } from 'react-redux'
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.login=this.login.bind(this)
+    this.login = this.login.bind(this)
   }
   login(e) {
     e.preventDefault();
-    var email=this.refs.email.getValue();
-    var pass=this.refs.pass.getValue();
+    var email = this.refs.email.getValue();
+    var pass = this.refs.pass.getValue();
     let signinDetail = {
       email: email,
       password: pass
     }
     this.props.signin(signinDetail)
-    console.log(this.props.fireVal)
-    console.log(this.props.loginval)
   }
   render() {
     const style = {
       height: 340,
       width: 400,
       margin: 20,
-      // textAlign: 'center',
       display: 'inline-block',
     };
     return (
       <div className="App">
         <br /><br /><br /><br />
-
         <Paper style={style} zDepth={2} >
-
           <h1>Login</h1>
-
           <p ref="demo">
             <br /> </p>
           <TextField
@@ -49,16 +43,18 @@ class Login extends Component {
             floatingLabelText="Password" ref="pass"
             type="password"
           /><br />
-
-          <RaisedButton backgroundColor="#316dc3" label="Login" primary={true} style={{ margin: 12 }} onClick={this.login.bind(this)} />
-
+          <RaisedButton
+            backgroundColor="#316dc3"
+            label="Login"
+            primary={true}
+            style={{ margin: 12 }}
+            onClick={this.login.bind(this)}
+          />
         </Paper>
-
       </div>
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     auth: state.AuthReducer,
@@ -73,5 +69,4 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

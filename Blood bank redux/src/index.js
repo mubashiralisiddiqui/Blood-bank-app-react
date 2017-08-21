@@ -6,9 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {AppBarExampleIcon,Main,Signup,Login,Home,RequiredBlood,DonateBlood } from './components';
 import './index.css';
-
-
-// import configureStore from './store/configureStore';
 import store from './store/configureStore'
 import {
   Router,
@@ -16,13 +13,7 @@ import {
   IndexRoute,
   browserHistory
 } from 'react-router';
-
-
-// const store = configureStore();
-
 injectTapEventPlugin();
-
-// Initialize Firebase
  var config = {
     apiKey: "AIzaSyCpyzTcipruNtx6tlYuUoOGRmrzyAf6meo",
     authDomain: "authenticationsignup-5ca1a.firebaseapp.com",

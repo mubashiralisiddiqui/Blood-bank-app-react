@@ -4,8 +4,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import './signup.css';
-import {connect}from 'react-redux'
-import {signup} from '../../actions/authaction'
+import { connect } from 'react-redux'
+import { signup } from '../../actions/authaction'
 
 class Signup extends React.Component {
     constructor(props) {
@@ -20,10 +20,10 @@ class Signup extends React.Component {
         let name = this.refs.name.getValue();
         let email = this.refs.email.getValue();
         let password = this.refs.Password.getValue();
-        let userSignUp={
-            name:name,
-            email:email,
-            password:password
+        let userSignUp = {
+            name: name,
+            email: email,
+            password: password
         }
         this.props.SignUp(userSignUp)
         console.log(this.props.firedata)
@@ -32,8 +32,6 @@ class Signup extends React.Component {
         const style = {
             height: 270,
             width: 400,
-            // margin: 20,
-            // textAlign: 'center',
             display: 'inline-block',
         };
         return (
@@ -48,32 +46,28 @@ class Signup extends React.Component {
                             <br />
                             <TextField type="password" hintText="Password" ref="Password" /> <br />
                             <br />
-                            <RaisedButton type="submit" label="SignUp" primary={true} className="btncolor"/>
+                            <RaisedButton type="submit" label="SignUp" primary={true} className="btncolor" />
                             <Link to="/login"><p>Already have an account?</p></Link>
                         </form>
                     </div>
                 </Paper>
-
                 <div className="form">
-
                 </div>
-
             </div>
-
         )
     }
 }
-const mapStateToProps=(state) =>{
-    return{
+const mapStateToProps = (state) => {
+    return {
         auth: state.AuthReducer,
-        firedata:state.firebaseval
+        firedata: state.firebaseval
     };
 }
-const mapDispatchToProps=(dispatch) =>{
-    return{
-        SignUp: (userSignUp) =>{
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SignUp: (userSignUp) => {
             dispatch(signup(userSignUp));
         }
     };
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
