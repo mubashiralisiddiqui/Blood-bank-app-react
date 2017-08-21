@@ -16,16 +16,13 @@ class AppBarExampleIcon extends React.Component {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 this.setState({ isLogged: true });
-                console.log(this.state.isLogged);
             } else {
                 this.setState({ isLogged: false });
-                return console.log(this.state.isLogged);
             }
         }.bind(this));
     }
     logout(e) {
         e.preventDefault();
-        console.log(this.props.Logout())
     }
     render() {
         return (

@@ -16,7 +16,6 @@ export function signup(usersignup) {
                 firebase.database().ref('users/' + userId).set(userDetails)
                 firebase.database().ref('users/' + userId).on('value', (data) => {
                     var obj = data.val();
-                    console.log(obj)
                 })
             })
             .catch((error) => {
@@ -35,7 +34,6 @@ export function SignIn(userSignIn) {
                 var userId = firebase.auth().currentUser.uid;
                 firebase.database().ref('users/' + userId).on('value', (data) => {
                     var obj = data.val();
-                    console.log(obj)
                     dispatch(signInUpdate(obj));
                 })
                 browserHistory.push('/home');

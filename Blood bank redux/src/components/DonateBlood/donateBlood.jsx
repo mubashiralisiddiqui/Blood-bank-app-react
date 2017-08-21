@@ -43,7 +43,6 @@ class DonateBlood extends React.Component {
       value: key + 1,
       blood: e.target.childNodes[0].nodeValue
     })
-    console.log(this.state.blood)
   }
   render() {
     return (

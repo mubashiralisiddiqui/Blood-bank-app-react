@@ -3,8 +3,6 @@ import actionTypes from '../reducers/actionTypes';
 
 export function takeBlood(bloodgroup) {
   return dispatch => {
-    console.log("your userdetatilaction is working properly")
-    console.log(bloodgroup)
     var arr = [];
     var donors = []
     switch (bloodgroup) {

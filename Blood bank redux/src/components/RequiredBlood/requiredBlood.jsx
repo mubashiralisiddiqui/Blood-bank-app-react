@@ -63,7 +63,6 @@ class Requiredblood extends Component {
                     </TableHeader>
                     <TableBody>
                         {this.props.donorInfo.map((val, i) => {
-                            console.log(val)
                             return (
                                 <TableRow key={i}>
                                     <TableRowColumn key={i}>{i + 1}</TableRowColumn>
@@ -90,7 +89,6 @@ function mapStateToProps(state) {
     }
 }
 function mapDispatchToProps(dispatch) {
-    console.log(dispatch)
     return {
         TakeBlood: (userSignin) => {
             dispatch(takeBlood(userSignin));

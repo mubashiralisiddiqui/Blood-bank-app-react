@@ -14,9 +14,6 @@ class Signup extends React.Component {
     }
     signup(ev) {
         ev.preventDefault();
-        console.log(this.refs.email.getValue());
-        console.log(this.refs.Password.getValue());
-        console.log(this.refs.name.getValue());
         let name = this.refs.name.getValue();
         let email = this.refs.email.getValue();
         let password = this.refs.Password.getValue();
@@ -26,7 +23,6 @@ class Signup extends React.Component {
             password: password
         }
         this.props.SignUp(userSignUp)
-        console.log(this.props.firedata)
     }
     render() {
         const style = {
